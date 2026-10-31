@@ -20,7 +20,8 @@ tenant directory shows **three problems** inside it. Each has its own ticket now
 in [AdamaOuedraogo/support-kb-4471](https://github.com/AdamaOuedraogo/support-kb-4471/issues).
 
 <Callout kind="warn">
-One fix is queued for #4471. It clears the first problem only. The other two stay open until they get their own fix.
+The desk closed #4471 on 5 October: the parser is fixed, the hint will not be fixed because the booking-v3
+form was retired, and nothing in that closure touches the one-day move. See [where it stands](#where-it-stands).
 </Callout>
 
 ## The split
@@ -72,11 +73,23 @@ because the parser fix will not move them back.
 - **The page was written from the queue, not from the data.** The incident page typed "one issue" into a
   paragraph while its own table, built from the data, already showed two causes and a footnote.
 
-## What the desk should do
+## Where it stands
 
-1. Keep #4471 as the `parser` ticket, with the count in the first row above.
-2. Track the `hint` and `one-day-move` problems on their own tickets (linked in the table).
-3. Change triage so a merge checks the tenant's locale and form, not the subject alone. The
+Engineering update on the desk's side, 5 October: **#4471 closed**.
+
+| problem | desk's verdict | this repo's ticket |
+|---|---|---|
+| `parser` | **fixed** · `fix(dates): parse dd/mm for eu locales` | [#1](https://github.com/AdamaOuedraogo/support-kb-4471/issues/1) closed as completed |
+| `hint` | **won't fix** · booking-v3 form retired, so the MM/DD hint is gone with it | [#2](https://github.com/AdamaOuedraogo/support-kb-4471/issues/2) closed as not planned |
+| `one-day-move` | not addressed · a day-first parser and a retired form leave a date-boundary shift in place | [#3](https://github.com/AdamaOuedraogo/support-kb-4471/issues/3) stays open |
+
+## What the desk should still do
+
+1. Watch for the next one-day report. The five on file are the only trace of the third problem, and
+   closing #4471 did not fix it.
+2. Change triage so a merge checks the tenant's locale and form, not the subject alone. The
    [dedupe explorer](/kb/triage/dedupe) already runs that check; make it the rule.
+3. When a page says "one issue", let a component count. The [#4471](/kb/incidents/4471) table showed
+   two causes and a footnote all along.
 
 <RenderStamp {signature} />
