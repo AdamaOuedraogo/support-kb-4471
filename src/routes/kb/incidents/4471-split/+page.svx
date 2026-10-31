@@ -1,0 +1,79 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: adama
+status: proposed
+reviewed: 2026-10-31
+signature: 'v1.eyJzdWIiOiI0OTgiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzQ4NDYzNSwiZXhwIjoxNzkzNTcxMDM1fQ.cYZi_FBRgvlZW_psGTyK6XeM5LsfrliWhYdz3kZpnrk'
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import OneDayMoves from '#lib/kb/OneDayMoves.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was merged on subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
+and marked known as one bug: the parser reads dates month first. Reading every report body next to the
+tenant directory shows **three problems** inside it. Each has its own ticket now, with the reports it covers,
+in [AdamaOuedraogo/support-kb-4471](https://github.com/AdamaOuedraogo/support-kb-4471/issues).
+
+<Callout kind="warn">
+One fix is queued for #4471. It clears the first problem only. The other two stay open until they get their own fix.
+</Callout>
+
+## The split
+
+Every report is counted once. The export has overlapping pages, so rows are deduplicated by id first; the
+table below is built from `reports-4471.json`, the tenant files and `desk-notes.json` at render time.
+
+<ProblemTable ticket={4471} repo="AdamaOuedraogo/support-kb-4471" tickets={{ parser: 1, hint: 2, 'one-day-move': 3 }} />
+
+## 1 · `parser` — the shared parser reads month first
+
+Every tenant on file writes the day first (checked against the platform's locale data, not a typed list).
+The shared parser reads `MM/DD`, so a day of 1 to 12 swaps with the month: a booking for 7 April goes out
+as 4 July. Days above 12 cannot be read month first, which is why no report quotes one.
+
+This is every report that came in through the app or by email, plus form reports from `booking-v2`
+tenants, whose form prints the right `DD/MM/YYYY` hint. It is what #4471 was meant to be, and the queued
+fix (parse with the tenant's locale) covers it.
+
+## 2 · `hint` — booking-v3 tells day-first tenants to type month first
+
+The `booking-v3` form prints `MM/DD/YYYY` under its date field. Three day-first tenants run it
+(alder.physio, copper.studio, pale.harbour). Their customers type what the hint says, month first, and the
+form reads it the tenant's way, day first. The symptom is the same month flip, so the subject lines match
+and the desk merged them, but the cause is in the form, not the parser. Fixing the parser leaves this
+in place; the hint must follow the tenant's locale, or the field must be read in the order the hint shows.
+
+## 3 · `one-day-move` — the date shifts by one day
+
+A few reports describe no month flip at all. The date moves by exactly one day, the same meeting lands
+on different days in Lisbon and Toronto, or an invite is stamped before the booking was made. That is a
+date-boundary problem: the booking's date crosses a time-zone offset or the UTC day line between booking
+and invite. The desk had read these as a one-day move (`desk-notes.json`) but left them in #4471 because
+their subjects matched.
+
+<OneDayMoves />
+
+## Why one ticket swallowed three problems
+
+- **Dedupe by subject** ([decision 0001](/kb/decisions/0001-dedupe-by-subject)) merges on the subject line
+  alone. Twelve subject lines cover all three problems, so matching subjects said "same issue" every time.
+- **Intake's tag is a guess** from the reporter's browser locale. A tenant in Germany whose staff run an
+  `en-US` browser was tagged `hint`; a `booking-v3` form report from a Portuguese browser was tagged
+  `parser`. The table above shows how often the tag and the cause disagree. The cause depends on the
+  tenant and the channel, which intake never looks up.
+- **The page was written from the queue, not from the data.** The incident page typed "one issue" into a
+  paragraph while its own table, built from the data, already showed two causes and a footnote.
+
+## What the desk should do
+
+1. Keep #4471 as the `parser` ticket, with its count corrected to the first row above.
+2. Track the `hint` and `one-day-move` problems on their own tickets (linked in the table).
+3. Change triage so a merge checks the tenant's locale and form, not the subject alone. The
+   [dedupe explorer](/kb/triage/dedupe) already runs that check; make it the rule.
+
+<RenderStamp {signature} />
