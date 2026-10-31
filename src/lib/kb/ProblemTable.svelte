@@ -41,10 +41,14 @@
     {#each split.problems as p (p.key)}
       <tr>
         <td><code>{p.key}</code><br /><span class="name">{NAME[p.key]}</span></td>
-        <td><strong>{p.reports.length}</strong></td>
+        <td>
+          <strong>{p.reports.length}</strong>
+          {#if p.readAsMove}<br /><span class="small">{p.readAsMove} read as a one-day move, filed here by tenant</span>{/if}
+          {#if p.countedUnder.length}<br /><span class="small">counted under <code>{p.countedUnder.join(', ')}</code> by the desk</span>{/if}
+        </td>
         <td class="small">{fmt(p.channels)}</td>
         <td class="small">{fmt(p.taggedAs)}</td>
-        <td>{p.tenants.length}</td>
+        <td>{p.tenants}</td>
         <td class="small">{p.firstSeen} → {p.lastSeen}</td>
         <td>
           {#if tickets[p.key]}
@@ -57,7 +61,7 @@
     {/each}
   </tbody>
   <tfoot>
-    <tr><td>all</td><td><strong>{split.problems.reduce((n, p) => n + p.reports.length, 0)}</strong></td><td colspan="5">every report counted once</td></tr>
+    <tr><td>all</td><td><strong>{split.merged}</strong></td><td colspan="5">unique reports in #{ticket}; the desk counts the one-day moves where it filed them, so the cause rows add up to this and the one-day-move row is a footnote with a ticket of its own</td></tr>
   </tfoot>
 </table>
 

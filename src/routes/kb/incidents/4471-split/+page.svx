@@ -25,8 +25,10 @@ One fix is queued for #4471. It clears the first problem only. The other two sta
 
 ## The split
 
-Every report is counted once. The export has overlapping pages, so rows are deduplicated by id first; the
-table below is built from `reports-4471.json`, the tenant files and `desk-notes.json` at render time.
+The counts follow the desk's own view of the export, the way the [#4471](/kb/incidents/4471) table counts:
+rows are deduplicated by id first, each report sits under its cause, and the reports the desk read as a
+one-day move stay counted where they were filed, footnoted. The table below is built from
+`reports-4471.json`, the tenant files and `desk-notes.json` at render time.
 
 <ProblemTable ticket={4471} repo="AdamaOuedraogo/support-kb-4471" tickets={{ parser: 1, hint: 2, 'one-day-move': 3 }} />
 
@@ -53,8 +55,9 @@ in place; the hint must follow the tenant's locale, or the field must be read in
 A few reports describe no month flip at all. The date moves by exactly one day, the same meeting lands
 on different days in Lisbon and Toronto, or an invite is stamped before the booking was made. That is a
 date-boundary problem: the booking's date crosses a time-zone offset or the UTC day line between booking
-and invite. The desk had read these as a one-day move (`desk-notes.json`) but left them in #4471 because
-their subjects matched.
+and invite. The desk had read these as a one-day move (`desk-notes.json`) and filed them under `parser` by tenant,
+footnoted, because their subjects matched. They keep that place in the count and get a ticket of their own,
+because the parser fix will not move them back.
 
 <OneDayMoves />
 
@@ -71,7 +74,7 @@ their subjects matched.
 
 ## What the desk should do
 
-1. Keep #4471 as the `parser` ticket, with its count corrected to the first row above.
+1. Keep #4471 as the `parser` ticket, with the count in the first row above.
 2. Track the `hint` and `one-day-move` problems on their own tickets (linked in the table).
 3. Change triage so a merge checks the tenant's locale and form, not the subject alone. The
    [dedupe explorer](/kb/triage/dedupe) already runs that check; make it the rule.
