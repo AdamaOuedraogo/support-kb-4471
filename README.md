@@ -34,3 +34,12 @@ Support desk. Decision records: whoever signed them.
 ---
 
 Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
+
+## Added 2026-10-31 (MEGA.dev S01E03 · "what it shows")
+
+- `src/routes/kb/incidents/4471-split/+page.svx` — signed page: #4471 holds three problems, not one.
+  Counts are computed at render time by `src/lib/kb/ProblemTable.svelte` from `src/lib/kb/problems.ts`.
+- `rendered/4471-split.html` and `rendered/4471-split.png` — the page as the desk sees it (static build).
+- One GitHub issue per problem lives in this repo's issue tracker, each with the reports it covers.
+- `package.json`, `svelte.config.js`, `vite.config.ts` — a SvelteKit + mdsvex build around the export, so
+  the pages render again: `npm install && npm run build` writes `build/`.

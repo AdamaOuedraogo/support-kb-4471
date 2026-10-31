@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><!-- Rendered copy of src/routes/kb/incidents/4471-split/+page.svx, as the desk sees it in the kb (static build, scripts removed). --><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!----><title>#4471 · three problems, not one · support kb</title>
+		<style>:root{--bg: #fbfaf7;--fg: #1d1d1b;--muted: #6b6a66;--line: #e3e0d8;--accent: #2f6f5e;--warn: #b4501f;--warn-bg: #fbeee6;--note-bg: #eef5f2;--mono: ui-monospace, "Cascadia Code", Menlo, monospace}@media(prefers-color-scheme:dark){:root{--bg: #171716;--fg: #ecebe6;--muted: #9c9a93;--line: #34332f;--accent: #6fbfa6;--warn: #f0905d;--warn-bg: #3a2418;--note-bg: #1d2c27}}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.kb th,.kb td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}.kb code{font-family:var(--mono);font-size:.88em}.kb a{color:var(--accent)}.kb.svelte-e2jw2j{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}.crumb.svelte-e2jw2j{font:.8rem var(--mono);text-decoration:none;color:var(--muted)}h1.svelte-e2jw2j{margin:.25rem 0 .5rem;line-height:1.2}.meta.svelte-e2jw2j{display:flex;flex-wrap:wrap;gap:.5rem 1rem;color:var(--muted);font-size:.85rem;margin:0}.status.svelte-e2jw2j{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}.stale.svelte-e2jw2j{color:var(--warn);font-weight:600}.banner.svelte-e2jw2j{background:var(--warn-bg);color:var(--warn);padding:.6rem 1rem;border-radius:6px}footer.svelte-e2jw2j{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+		<style>aside.svelte-17bri61{border-left:4px solid var(--accent);padding:.5rem 1rem;margin:1rem 0;background:var(--note-bg)}aside.warn.svelte-17bri61{border-color:var(--warn);background:var(--warn-bg)}
+</style>
+		<style>.sum.svelte-1op6c6{font-size:1.05rem}.small.svelte-1op6c6,.name.svelte-1op6c6{color:var(--muted);font-size:.85em}.warn.svelte-1op6c6{color:var(--warn);font-weight:600}tfoot.svelte-1op6c6 td:where(.svelte-1op6c6){border-top:2px solid var(--line);border-bottom:0}.stamp.svelte-1280m42{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp.svelte-1280m42 b:where(.svelte-1280m42){color:var(--accent);letter-spacing:.04em}.missing.svelte-1280m42{color:var(--warn)}
+</style>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>adama</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-10-31 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> was merged on subject lines (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>)
+and marked known as one bug: the parser reads dates month first. Reading every report body next to the
+tenant directory shows <strong>three problems</strong> inside it. Each has its own ticket now, with the reports it covers,
+in <a href="https://github.com/AdamaOuedraogo/support-kb-4471/issues" rel="nofollow">AdamaOuedraogo/support-kb-4471</a>.</p> <aside class="warn svelte-17bri61"><!---->One fix is queued for #4471. It clears the first problem only. The other two stay open until they get their own fix.<!----></aside><!----> <h2>The split</h2> <p>Every report is counted once. The export has overlapping pages, so rows are deduplicated by id first; the
+table below is built from <code>reports-4471.json</code>, the tenant files and <code>desk-notes.json</code> at render time.</p> <p class="sum svelte-1op6c6"><strong>427</strong> rows in the export → <strong>412</strong> unique reports
+  (15 exact duplicates from overlapping export pages) · <strong>412</strong> merged into #4471 · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>channels</th><th>intake tagged as</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code><br><span class="name svelte-1op6c6">parser reads month first</span></td><td><strong>374</strong></td><td class="small svelte-1op6c6">app ×202 · email ×147 · form ×25</td><td class="small svelte-1op6c6">parser ×351 · hint ×23</td><td>11</td><td class="small svelte-1op6c6">2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/AdamaOuedraogo/support-kb-4471/issues/1">support-kb-4471#1</a><!--]--></td></tr><tr><td><code>hint</code><br><span class="name svelte-1op6c6">booking-v3 hint says MM/DD</span></td><td><strong>33</strong></td><td class="small svelte-1op6c6">form ×33</td><td class="small svelte-1op6c6">hint ×18 · parser ×15</td><td>3</td><td class="small svelte-1op6c6">2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/AdamaOuedraogo/support-kb-4471/issues/2">support-kb-4471#2</a><!--]--></td></tr><tr><td><code>one-day-move</code><br><span class="name svelte-1op6c6">date moves one day</span></td><td><strong>5</strong></td><td class="small svelte-1op6c6">email ×3 · app ×2</td><td class="small svelte-1op6c6">parser ×5</td><td>5</td><td class="small svelte-1op6c6">2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/AdamaOuedraogo/support-kb-4471/issues/3">support-kb-4471#3</a><!--]--></td></tr><!--]--></tbody><tfoot class="svelte-1op6c6"><tr><td class="svelte-1op6c6">all</td><td class="svelte-1op6c6"><strong>412</strong></td><td colspan="5" class="svelte-1op6c6">every report counted once</td></tr></tfoot></table><!----> <h2>1 · <code>parser</code> — the shared parser reads month first</h2> <p>Every tenant on file writes the day first (checked against the platform’s locale data, not a typed list).
+The shared parser reads <code>MM/DD</code>, so a day of 1 to 12 swaps with the month: a booking for 7 April goes out
+as 4 July. Days above 12 cannot be read month first, which is why no report quotes one.</p> <p>This is every report that came in through the app or by email, plus form reports from <code>booking-v2</code> tenants, whose form prints the right <code>DD/MM/YYYY</code> hint. It is what #4471 was meant to be, and the queued
+fix (parse with the tenant’s locale) covers it.</p> <h2>2 · <code>hint</code> — booking-v3 tells day-first tenants to type month first</h2> <p>The <code>booking-v3</code> form prints <code>MM/DD/YYYY</code> under its date field. Three day-first tenants run it
+(alder.physio, copper.studio, pale.harbour). Their customers type what the hint says, month first, and the
+form reads it the tenant’s way, day first. The symptom is the same month flip, so the subject lines match
+and the desk merged them, but the cause is in the form, not the parser. Fixing the parser leaves this
+in place; the hint must follow the tenant’s locale, or the field must be read in the order the hint shows.</p> <h2>3 · <code>one-day-move</code> — the date shifts by one day</h2> <p>A few reports describe no month flip at all. The date moves by exactly one day, the same meeting lands
+on different days in Lisbon and Toronto, or an invite is stamped before the booking was made. That is a
+date-boundary problem: the booking’s date crosses a time-zone offset or the UTC day line between booking
+and invite. The desk had read these as a one-day move (<code>desk-notes.json</code>) but left them in #4471 because
+their subjects matched.</p> <table><thead><tr><th>id</th><th>tenant</th><th>channel</th><th>received</th><th>what the reporter wrote</th></tr></thead><tbody><!--[--><tr><td><code>R-41202</code></td><td>kettle.books</td><td>email</td><td>2026-04-02</td><td>Invite says Tuesday 12 May. Calendar says Monday 11 May. My client turned up on the Monday. We had coffee.</td></tr><tr><td><code>R-41209</code></td><td>alder.physio</td><td>app</td><td>2026-04-06</td><td>Every booking in June is one day off. Only June. Why only June.</td></tr><tr><td><code>R-41236</code></td><td>nine.lanterns</td><td>app</td><td>2026-04-20</td><td>The invite arrived before I made the booking. I would like to know how.</td></tr><tr><td><code>R-41344</code></td><td>pale.harbour</td><td>email</td><td>2026-06-12</td><td>Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting. We held it twice.</td></tr><tr><td><code>R-41620</code></td><td>lantern.row</td><td>email</td><td>2026-10-04</td><td>Tuesday 6 October showed as Monday. I moved it myself. I have stopped reporting these but my colleague says it helps you.</td></tr><!--]--></tbody></table><!----> <h2>Why one ticket swallowed three problems</h2> <ul><li><strong>Dedupe by subject</strong> (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>) merges on the subject line
+alone. Twelve subject lines cover all three problems, so matching subjects said “same issue” every time.</li> <li><strong>Intake’s tag is a guess</strong> from the reporter’s browser locale. A tenant in Germany whose staff run an <code>en-US</code> browser was tagged <code>hint</code>; a <code>booking-v3</code> form report from a Portuguese browser was tagged <code>parser</code>. The table above shows how often the tag and the cause disagree. The cause depends on the
+tenant and the channel, which intake never looks up.</li> <li><strong>The page was written from the queue, not from the data.</strong> The incident page typed “one issue” into a
+paragraph while its own table, built from the data, already showed two causes and a footnote.</li></ul> <h2>What the desk should do</h2> <ol><li>Keep #4471 as the <code>parser</code> ticket, with its count corrected to the first row above.</li> <li>Track the <code>hint</code> and <code>one-day-move</code> problems on their own tickets (linked in the table).</li> <li>Change triage so a merge checks the tenant’s locale and form, not the subject alone. The <a href="/kb/triage/dedupe">dedupe explorer</a> already runs that check; make it the rule.</li></ol> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-2F2H-4S6G</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><div id="svelte-announcer" aria-live="assertive" aria-atomic="true" style="position: absolute; left: 0; top: 0; clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; white-space: nowrap; width: 1px; height: 1px"><!----></div><!--]--><!--]-->
+			
+			
+		</div>
+  
+
+</body></html>
